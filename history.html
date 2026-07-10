@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hazard History</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="grid-bg"></div>
+    <div class="scanline"></div>
+
+    <div class="container">
+        <header class="header">
+            <h1 class="title">HAZARD HISTORY</h1>
+            <p class="subtitle">Lifecycle Log</p>
+            <div class="history-actions">
+                <a href="index.html" class="history-link-btn">Back to Dashboard</a>
+            </div>
+        </header>
+
+        <section class="history-panel">
+            <div class="history-panel-header">
+                <h2>Latest Events</h2>
+                <div id="history-status" class="status-badge safe">LOADING</div>
+            </div>
+            <div id="history-list" class="history-list">
+                <div class="history-empty">Loading hazard history...</div>
+            </div>
+        </section>
+    </div>
+
+    <script src="data.js"></script>
+    <script src="history.js"></script>
+</body>
+</html>

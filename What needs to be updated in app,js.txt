@@ -1,0 +1,2 @@
+In the app.js, in both the UploadUrls:[] and const urls, the third URL IP needs to be changed again and again. 
+Dont forget that. That is important. Otherwise, nothing will work on mobile, and will only work in laptop.

@@ -1,0 +1,8 @@
+Flask==3.0.0
+flask-cors==4.0.0
+torch
+torchvision
+pillow
+joblib
+numpy
+scikit-learn
