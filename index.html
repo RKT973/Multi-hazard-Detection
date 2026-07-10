@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IoT Hazard Detection System</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Grid Background -->
+    <div class="grid-bg"></div>
+    <div class="scanline"></div>
+
+    <!-- Main Container -->
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <h1 class="title">HAZARD MONITOR</h1>
+            <p class="subtitle">Real-Time Environmental Threat Detection</p>
+            <div class="connection-status">
+                <span class="dot online"></span>
+                <span id="status-text">CONNECTING...</span>
+            </div>
+        </header>
+
+        <!-- Hazard Banner -->
+        <div id="hazard-banner" class="hazard-banner safe">
+            <div class="banner-content">
+                <span id="hazard-icon">✓</span>
+                <span id="hazard-text">SYSTEM: SAFE</span>
+            </div>
+        </div>
+
+        <!-- Environment Stability -->
+        <div class="env-stability">
+            <div class="stability-label">🛰️ ENVIRONMENT STABILITY</div>
+            <div class="stability-bar">
+                <div id="stability-fill" class="stability-fill"></div>
+            </div>
+            <div id="stability-value" class="stability-text">STABLE 100%</div>
+        </div>
+
+        <!-- Sensors Grid -->
+        <div class="sensors-grid">
+            <!-- Camera -->
+            <div id="camera-card" class="sensor-card camera-card">
+                <div class="card-header camera-card-header">
+                    <div>
+                        <span class="icon">CAM</span>
+                        <span class="label">Camera Feed</span>
+                    </div>
+                    <div id="camera-upload-status" class="status-badge safe">WAITING</div>
+                </div>
+                <div class="camera-feed-wrap">
+                    <video id="camera-video" class="camera-video" autoplay playsinline muted></video>
+                    <div id="camera-placeholder" class="camera-placeholder">CAMERA STARTING</div>
+                </div>
+            </div>
+
+            <!-- Temperature -->
+            <div class="sensor-card temp">
+                <div class="card-header">
+                    <span class="icon">🌡️</span>
+                    <span class="label">Temperature</span>
+                </div>
+                <div class="card-value">
+                    <span id="temp-value">--</span>
+                    <span class="unit">°C</span>
+                </div>
+                <div id="temp-status" class="status-badge safe">SAFE</div>
+                <canvas id="temp-chart" class="mini-chart"></canvas>
+            </div>
+
+            <!-- Humidity -->
+            <div class="sensor-card humidity">
+                <div class="card-header">
+                    <span class="icon">💧</span>
+                    <span class="label">Humidity</span>
+                </div>
+                <div class="card-value">
+                    <span id="humidity-value">--</span>
+                    <span class="unit">%</span>
+                </div>
+                <div id="humidity-status" class="status-badge safe">SAFE</div>
+                <canvas id="humidity-chart" class="mini-chart"></canvas>
+            </div>
+
+            <!-- Gas -->
+            <div class="sensor-card gas">
+                <div class="card-header">
+                    <span class="icon">☁️</span>
+                    <span class="label">Gas Level</span>
+                </div>
+                <div class="card-value">
+                    <span id="gas-value">--</span>
+                    <span class="unit">RAW</span>
+                </div>
+                <div id="gas-status" class="status-badge safe">SAFE</div>
+                <canvas id="gas-chart" class="mini-chart"></canvas>
+            </div>
+
+            <!-- Light -->
+            <div class="sensor-card light">
+                <div class="card-header">
+                    <span class="icon">💡</span>
+                    <span class="label">Light (LDR)</span>
+                </div>
+                <div class="card-value">
+                    <span id="light-value">--</span>
+                    <span class="unit">RAW</span>
+                </div>
+                <div id="light-status" class="status-badge safe">SAFE</div>
+                <canvas id="light-chart" class="mini-chart"></canvas>
+            </div>
+
+            <!-- Pressure -->
+            <div class="sensor-card pressure">
+                <div class="card-header">
+                    <span class="icon">🌪️</span>
+                    <span class="label">Pressure</span>
+                </div>
+                <div class="card-value">
+                    <span id="pressure-value">--</span>
+                    <span class="unit">hPa</span>
+                </div>
+                <div id="pressure-status" class="status-badge safe">SAFE</div>
+                <canvas id="pressure-chart" class="mini-chart"></canvas>
+            </div>
+        </div>
+
+        <div class="history-link-wrap">
+            <a href="history.html" class="history-link-btn">Hazard History</a>
+        </div>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <div id="timestamp">Last Update: --:--:--</div>
+            <div id="data-source">Data Source: Local Test Data</div>
+        </footer>
+    </div>
+
+    <!-- Alert Modal -->
+    <div id="alert-modal" class="alert-modal hidden">
+        <div class="alert-box">
+            <div class="alert-icon">⚠️</div>
+            <h2 id="alert-title">HAZARD DETECTED</h2>
+            <p id="alert-message">System status has changed. Check details above.</p>
+            <button onclick="closeAlert()" class="alert-btn">ACKNOWLEDGE</button>
+        </div>
+    </div>
+
+    <!-- Camera Fullscreen View -->
+    <div id="camera-fullscreen" class="camera-fullscreen hidden">
+        <button id="camera-back-btn" class="camera-back-btn" aria-label="Back to dashboard">&lt;-</button>
+        <video id="camera-fullscreen-video" class="camera-video fullscreen-video" autoplay playsinline muted></video>
+    </div>
+
+    <!-- Scripts -->
+    <script src="data.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
